@@ -11,7 +11,10 @@ def load_settings():
     except Exception as e:
         print(e)
         return "False"
-        
+
+def send_msg(reddit, user, title, message):
+    reddit.redditor(user).message(title, message)
+
 def save_settings(everything):
     try:
         if os.name == "nt":
