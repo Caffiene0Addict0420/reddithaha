@@ -1,5 +1,5 @@
 from ezy_multiplayer import *
-import pickle, os, praw, time
+import pickle, os, praw, time, traceback
 from thread import start_new_thread
 
 def load_settings():
@@ -41,7 +41,7 @@ def reddit_logic():
                              username = settings[0],
                              password = settings[1])
         except Exception as e:
-            print(e)
+            traceback.print_exc()
             time.sleep(10)
             continue
         try:
@@ -66,11 +66,12 @@ def reddit_logic():
                                 if submission.subreddit != "forhire":
                                     submission.reply(settings[6])
                                 message = settings[8]
-                                if "*nl*" in messsage:message.replace("*nl*", "\n")
+                                if "*nl*" in message:message.replace("*nl*", "\n")
                                 if "*ln*" in message:message.replace("*ln*", str(submission.url))
                                 if "*un*" in message:message.replace("*un*", str(submission.author.name))
                                 send_msg(reddit, submission.author.name, settings[7], message)
         except Exception as e:
+            traceback.print_exc()
             print(e)
             print("ADVICE: *Check Wifi*")
         time.sleep(60)
