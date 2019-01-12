@@ -84,6 +84,7 @@ print("Local Hostname: " + get_ip())
 print("Local Hostname: " + get_ip("global"))
 print("Port: %s" % str(port))
 
-newLobby(port, send_back)
 start_new_thread(reddit_logic,)
+
+newLobby(port, send_back)
 while True:pass
