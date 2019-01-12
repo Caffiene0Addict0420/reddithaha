@@ -1,16 +1,22 @@
 from ezy_multiplayer import *
-import pickle
+import pickle, os
 
 def load_settings():
     try:
-        return pickle.load(open("settings.data", "rb"))
+        if os.name == "nt":
+            return pickle.load(open("settings.data", "rb"))
+        else:
+            return pickle.load(open("root/settings.data", "rb"))
     except Exception as e:
         print(e)
         return "False"
         
 def save_settings(everything):
     try:
-        pickle.dump(everything, open("settings.data", "wb"))
+        if os.name == "nt":
+            pickle.dump(everything, open("settings.data", "wb"))
+        else: 
+            pickle.dump(everything, open("root/settings.data", "wb"))
         return "True"
     except Exception as e:
         print(e)
