@@ -6,7 +6,7 @@ def load_settings():
         if os.name == "nt":
             return pickle.load(open("settings.data", "rb"))
         else:
-            return pickle.load(open("root/settings.data", "rb"))
+            return pickle.load(open("/root/settings.data", "rb"))
     except Exception as e:
         print(e)
         return "False"
@@ -16,7 +16,7 @@ def save_settings(everything):
         if os.name == "nt":
             pickle.dump(everything, open("settings.data", "wb"))
         else: 
-            pickle.dump(everything, open("root/settings.data", "wb"))
+            pickle.dump(everything, open("/root/settings.data", "wb"))
         return "True"
     except Exception as e:
         print(e)
