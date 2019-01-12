@@ -68,14 +68,14 @@ def reddit_logic():
                             if found == True:
                                 if submission.subreddit != "forhire":
                                     submission.reply(settings[6])
-                                message = settings[8]
-                                message.replace("*nl*", "\n")
-                                message.replace(u"*nl*", u"\n")
-                                message.replace("*ln*", str(submission.url))
-                                message.replace(u"*ln*", str(submission.url))
-                                message.replace("*un*", str(submission.author.name))
-                                message.replace(u"*un*", str(submission.author.name))
-                                send_msg(reddit, submission.author.name, settings[7], message)
+                                    message = settings[8]
+                                    message.replace("*nl*", "\n")
+                                    message.replace(u"*nl*", u"\n")
+                                    message.replace("*ln*", str(submission.url))
+                                    message.replace(u"*ln*", str(submission.url))
+                                    message.replace("*un*", str(submission.author.name))
+                                    message.replace(u"*un*", str(submission.author.name))
+                                    send_msg(reddit, submission.author.name, settings[7], message)
         except Exception as e:
             traceback.print_exc()
             print(e)
