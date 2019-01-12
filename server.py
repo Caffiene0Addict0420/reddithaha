@@ -28,10 +28,14 @@ def send_back(data):
     elif type(data) == dict:
         return save_settings(data["set_everything"])
     return data
-    
-port = get_free_port()
+
+if os.name == "nt":
+    port = get_free_port()
+else:
+    port = 8080
 
 print("Local Hostname: " + get_ip())
+print("Local Hostname: " + get_ip("global"))
 print("Port: %s" % str(port))
 
 newLobby(port, send_back)
